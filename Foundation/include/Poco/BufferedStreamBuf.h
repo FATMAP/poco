@@ -65,7 +65,13 @@ public:
 
 	~BasicBufferedStreamBuf()
 	{
-		Allocator::deallocate(_pBuffer, _bufsize);
+		try 
+		{
+			Allocator::deallocate(_pBuffer, _bufsize);
+		} catch (...)
+		{
+			poco_unexpected();
+		}
 	}
 
 	virtual int_type overflow(int_type c)
