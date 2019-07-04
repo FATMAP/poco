@@ -24,7 +24,7 @@ set_target_properties( "${LIBNAME}"
     DEFINE_SYMBOL Crypto_EXPORTS
     )
 
-target_link_libraries( "${LIBNAME}" Foundation ${OPENSSL_LIBRARIES} )
+target_link_libraries( "${LIBNAME}" Foundation OpenSSL::SSL OpenSSL::Crypto )
 target_include_directories( "${LIBNAME}"
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
